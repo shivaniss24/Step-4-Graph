@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt(); // Number of nodes
+        int m = scanner.nextInt(); // Number of edges
+
+        List<List<Integer>> adj = new ArrayList<>(n + 1); // Adjacency list representation
+
+        // Initialize adjacency list
+        for (int i = 0; i <= n; i++) {
+            adj.add(new ArrayList<>());
+        }
+
+        // Input the edges
+        for (int i = 0; i < m; i++) {
+            int u = scanner.nextInt();
+            int v = scanner.nextInt();
+            adj.get(u).add(v);
+            adj.get(v).add(u); // Assuming an undirected graph
+        }
+
+        int startNode = scanner.nextInt(); // Starting node for DFS traversal
+
+        boolean[] visited = new boolean[n + 1]; // Initialize visited array
+        Stack<Integer> st = new Stack<>();
+
+        st.push(startNode);
+        visited[startNode] = true;
+
+        System.out.print("DFS traversal starting from node " + startNode + ": ");
+
+        while (!st.isEmpty()) {
+            int current = st.pop();
+            System.out.print(current + " ");
+
+            for (int next : adj.get(current)) {
+                if (!visited[next]) {
+                    st.push(next);
+                    visited[next] = true;
+                }
+            }
+        }
+
+        System.out.println();
+
+        scanner.close();
+    }
+}
+
