@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    // Function to display a matrix
+    public static void displayMatrix(List<List<Integer>> matrix) {
+        for (List<Integer> row : matrix) {
+            for (int elem : row) {
+                System.out.print(elem + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        // Initialize a 3x3 matrix
+        List<List<Integer>> matrix = new ArrayList<>();
+        matrix.add(List.of(1, 2, 3));
+        matrix.add(List.of(4, 5, 6));
+        matrix.add(List.of(7, 8, 9));
+
+        // Display the matrix
+        System.out.println("Matrix:");
+        displayMatrix(matrix);
+    }
+}
